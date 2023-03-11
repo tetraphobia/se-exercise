@@ -15,6 +15,7 @@ if (DEV) {
 
 // Setup other middleware
 server.use(cors())
+server.use(express.json())
 
 // Setup routes
 server.use('/', Router)
