@@ -41,7 +41,7 @@ describe('API endpoints', () => {
         .set('Content-Type', 'application/json')
 
       expect(res.statusCode).to.equal(201)
-      expect(res.body).to.have.property('id')
+      expect(res.body).to.have.property('_id')
     })
   })
 })

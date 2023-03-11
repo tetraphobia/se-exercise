@@ -24,7 +24,7 @@ router.get('/', controller.getAll)
  *
  * Create new saved game
  */
-// router.post('/', controller.create)
+router.post('/', controller.create)
 
 /**
  * PUT /games/:id

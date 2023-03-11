@@ -13,4 +13,16 @@ export class GamesController {
     const games = await GameModel.find()
     res.json(games)
   }
+
+  /**
+   * Create a saved game
+   *
+   * @param {Request} req Express Request
+   * @param {Response} res Express Response
+   */
+  async create (req: Request, res: Response): Promise<void> {
+    // TODO: Put validation here
+    const game = await GameModel.create(req.body)
+    res.status(201).json(game)
+  }
 }
