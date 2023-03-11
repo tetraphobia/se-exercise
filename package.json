@@ -5,7 +5,7 @@
   "author": "Jacob Teddy <tetraphobia>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --ext .ts",
     "start": "NODE_ENV=development nodemon",
     "start:prod": "NODE_ENV=production node ./dist",
     "test": "NODE_ENV=test mocha"

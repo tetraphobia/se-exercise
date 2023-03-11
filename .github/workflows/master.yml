@@ -34,6 +34,11 @@ jobs:
         with:
           cmd: install
 
+      - name: Lint code
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: lint
+
       - name: Run tests
         uses: borales/actions-yarn@v4
         with:
