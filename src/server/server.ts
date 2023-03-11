@@ -3,7 +3,6 @@ import morgan from 'morgan'
 import cors from 'cors'
 
 import Router from '../routes'
-import { mongoConnect } from '../helpers/db'
 
 const DEV = process.env.NODE_ENV === 'development'
 
@@ -19,8 +18,5 @@ server.use(cors())
 
 // Setup routes
 server.use('/', Router)
-
-// Connect to Mongodb
-mongoConnect()
 
 export { server }

@@ -1,13 +1,13 @@
-import dotenv from 'dotenv'
 import { connect } from 'mongoose'
 import logger from 'jet-logger'
 
 /**
  * Connect to mongodb server with mongoose
+ *
+ * @param {string} uri Optional param specifying mongodb uri
  */
 export function mongoConnect () {
-  dotenv.config()
-  const uri: string = process.env.MONGO_URI || 'mongodb://admin:pass@localhost:27017'
+  const uri = process.env.MONGO_URI || 'mongodb://root:example@localhost:27017'
   connect(uri)
     .then(() => {
       logger.info('Connected to MongoDB!')

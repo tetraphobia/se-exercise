@@ -1,6 +1,10 @@
 import request from 'supertest'
 import { expect } from 'chai'
 import { server } from '../src/server'
+import { mongoConnect } from '../src/helpers/db'
+
+// Connect to separate test database
+mongoConnect()
 
 describe('API endpoints', () => {
   describe('GET /games', () => {
