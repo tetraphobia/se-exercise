@@ -12,6 +12,7 @@ export class GamesController {
    */
   async getAll (req: Request, res: Response): Promise<void> {
     const games = await GameModel.find()
+
     res.json(games)
   }
 
@@ -24,6 +25,12 @@ export class GamesController {
    */
   async getOne (req: Request, res: Response): Promise<void> {
     const game = await GameModel.findById(req.params.id)
+
+    if (!game) {
+      res.status(404)
+      return
+    }
+
     res.json(game)
   }
 
@@ -61,6 +68,12 @@ export class GamesController {
       new: true,
       upsert: true
     })
+
+    if (!game) {
+      res.status(404)
+      return
+    }
+
     res.status(200).json(game)
   }
 }
