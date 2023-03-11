@@ -13,7 +13,7 @@ You can download version 18 of Node.js on their official website.
 Alternatively, a tool like [nvm](https://github.com/nvm-sh/nvm) can help you manage multiple local Node.js versions.
 https://nodejs.org/en/download/
 ### Yarn
-Yarn can be installed via your package manager of choice, or through NPM.
+Yarn can be installed through corepack.
 ```bash
 corepack enable
 corepack prepare yarn@stable --activate
