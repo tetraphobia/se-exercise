@@ -15,6 +15,18 @@ export class GamesController {
   }
 
   /**
+   * Get one game
+   *
+   * @param {Request} req Express Request
+   * @param {Response} res Express Response
+   * @returns {Promise<void>}
+   */
+  async getOne (req: Request, res: Response): Promise<void> {
+    const game = await GameModel.findById(req.params.id)
+    res.json(game)
+  }
+
+  /**
    * Create a saved game
    *
    * @param {Request} req Express Request

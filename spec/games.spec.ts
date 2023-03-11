@@ -32,14 +32,24 @@ describe('API endpoints', () => {
     })
   })
 
-  // describe('GET /games/:id', () => {
-  //   it('responds 200 OK', async () => {
-  //     const res = await request(server)
-  //       .get('/games/1')
-  //       .set('Accept', 'application/json')
-  //       .set('Content-Type', 'application/json')
+  describe('GET /games/:id', () => {
+    it('responds 200 OK', async () => {
+      const test = await request(server)
+        .post('/games')
+        .send(gameData)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
 
-  //     expect(res.statusCode).to.equal(200)
-  //   })
-  // })
+      expect(test.statusCode).to.equal(201)
+      expect(test.body).to.have.property('_id')
+
+      const res = await request(server)
+        .get('/games/' + test.body._id)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+
+      expect(res.statusCode).to.equal(200)
+      expect(res.body).to.have.property('_id')
+    })
+  })
 })

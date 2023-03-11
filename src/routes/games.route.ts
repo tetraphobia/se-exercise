@@ -17,7 +17,7 @@ router.get('/', controller.getAll)
  *
  * Return game matching id
  */
-// router.get('/:id', controller.getOne)
+router.get('/:id', controller.getOne)
 
 /**
  * POST /games
