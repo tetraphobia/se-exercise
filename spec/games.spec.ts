@@ -1,11 +1,14 @@
 import request from 'supertest'
 import { expect } from 'chai'
 import { server } from '../src/server'
-import { mongoConnect } from '../src/helpers/db'
+import { mongoConnect, mongoDisconnect } from '../src/helpers/db'
 import { gameData } from './data'
 
 before('Connect to MongoDB', () => {
   mongoConnect()
+})
+after('Close MongoDB connection', () => {
+  mongoDisconnect()
 })
 describe('API endpoints', () => {
   describe('GET /games', () => {

@@ -1,4 +1,4 @@
-import { connect } from 'mongoose'
+import { connect, disconnect } from 'mongoose'
 import logger from 'jet-logger'
 
 /**
@@ -12,6 +12,20 @@ export function mongoConnect () {
     })
     .catch(err => {
       logger.err('Failed to connect to MongoDB!')
+      logger.err(err)
+    })
+}
+
+/**
+ * Close mongodb connection
+ */
+export function mongoDisconnect () {
+  disconnect()
+    .then(() => {
+      logger.info('Disconnected from MongoDB!')
+    })
+    .catch(err => {
+      logger.err('Failed to disconnect from MongoDB!')
       logger.err(err)
     })
 }
