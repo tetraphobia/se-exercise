@@ -15,10 +15,8 @@ https://nodejs.org/en/download/
 ### Yarn
 Yarn can be installed via your package manager of choice, or through NPM.
 ```bash
-sudo apt install yarn # Ubuntu
-sudo pacman -S yarn # Arch
-
-npm install yarn # NPM
+corepack enable
+corepack prepare yarn@stable --activate
 ```
 
 ### MongoDB
