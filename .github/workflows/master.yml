@@ -1,0 +1,36 @@
+name: SE Exercise CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      
+      - name: Start MongoDB
+        uses: supercharge/mongodb-github-action@1.8.0
+        with:
+          mongodb-version: ${{ matrix.mongodb-version }}
+          mongodb-username: root
+          mongodb-password: example
+
+      - name: Install deps
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+
+      - name: Run tests
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: test
