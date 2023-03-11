@@ -36,6 +36,7 @@ This application always runs in development mode. You can run the application us
 ```bash
 yarn start
 ```
+The application can then be accessed at http://localhost:3000/
 
 ## Configuration
 All configurations are handled using a `.env` file. First, copy the `.env.example` file to `.env`, then edit it with your desired configurations.
