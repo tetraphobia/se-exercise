@@ -2,7 +2,7 @@ import request from 'supertest'
 import { expect } from 'chai'
 import { server } from '../src/server'
 import { mongoConnect } from '../src/helpers/db'
-import { GameData } from './data'
+import { gameData } from './data'
 
 describe('API endpoints', () => {
   before('Connect to MongoDB', () => {
@@ -23,7 +23,7 @@ describe('API endpoints', () => {
     it('responds 201 Created', async () => {
       const res = await request(server)
         .post('/games')
-        .send(GameData)
+        .send(gameData)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
 
