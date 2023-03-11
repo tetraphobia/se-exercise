@@ -20,6 +20,14 @@
         "jsdoc"
     ],
     "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "jsdoc/check-tag-names": [
+            "error",
+            {
+                "definedTags": [
+                    "openapi"
+                ]
+            }
+        ]
     }
 }
