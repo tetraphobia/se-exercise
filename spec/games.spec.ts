@@ -2,7 +2,7 @@ import request from 'supertest'
 import { expect } from 'chai'
 import { server } from '../src/server'
 import { mongoConnect } from '../src/helpers/db'
-import { IGame } from '../src/interfaces/game.interface'
+import { GameData } from './data'
 
 describe('API endpoints', () => {
   before('Connect to MongoDB', () => {
@@ -21,22 +21,9 @@ describe('API endpoints', () => {
 
   describe('POST /games', () => {
     it('responds 201 Created', async () => {
-      // Generate a test body
-      const body: IGame = {
-        board: Array.from(Array(100).fill(0), () => new Array(100).fill(0)),
-        player: {
-          health: 200,
-          moves: 450,
-          pos: {
-            x: 0,
-            y: 0
-          }
-        }
-      }
-
       const res = await request(server)
         .post('/games')
-        .send(body)
+        .send(GameData)
         .set('Accept', 'application/json')
         .set('Content-Type', 'application/json')
 
@@ -44,4 +31,15 @@ describe('API endpoints', () => {
       expect(res.body).to.have.property('_id')
     })
   })
+
+  // describe('GET /games/:id', () => {
+  //   it('responds 200 OK', async () => {
+  //     const res = await request(server)
+  //       .get('/games/1')
+  //       .set('Accept', 'application/json')
+  //       .set('Content-Type', 'application/json')
+
+  //     expect(res.statusCode).to.equal(200)
+  //   })
+  // })
 })
