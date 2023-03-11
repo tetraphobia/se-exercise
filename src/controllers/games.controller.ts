@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { GameModel } from '../models/game.model'
+import * as Validators from '../validators'
 
 export class GamesController {
   /**
@@ -33,7 +34,12 @@ export class GamesController {
    * @param {Response} res Express Response
    */
   async create (req: Request, res: Response): Promise<void> {
-    // TODO: Put validation here
+    const validation = Validators.Game(req.body)
+    if (validation.error) {
+      res.status(400).json(validation.error)
+      return
+    }
+
     const game = await GameModel.create(req.body)
     res.status(201).json(game)
   }
@@ -45,7 +51,12 @@ export class GamesController {
    * @param {Response} res Express Response
    */
   async update (req: Request, res: Response): Promise<void> {
-    // TODO: Put validation here
+    const validation = Validators.Game(req.body)
+    if (validation.error) {
+      res.status(400).json(validation.error)
+      return
+    }
+
     const game = await GameModel.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       upsert: true
