@@ -52,4 +52,33 @@ describe('API endpoints', () => {
       expect(res.body).to.have.property('_id')
     })
   })
+
+  describe('PUT /games/:id', () => {
+    it('responds 200 OK', async () => {
+      const test = await request(server)
+        .post('/games')
+        .send(gameData)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+
+      expect(test.statusCode).to.equal(201)
+      expect(test.body).to.have.property('_id')
+
+      const updates = {
+        player: {
+          health: 150
+        }
+      }
+
+      const res = await request(server)
+        .put('/games/' + test.body._id)
+        .send(updates)
+        .set('Accept', 'application/json')
+        .set('Content-Type', 'application/json')
+
+      expect(res.statusCode).to.equal(200)
+      expect(res.body).to.have.property('_id')
+      expect(res.body.player.health).to.equal(150)
+    })
+  })
 })

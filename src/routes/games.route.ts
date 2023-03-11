@@ -31,6 +31,6 @@ router.post('/', controller.create)
  *
  * Update existing saved game
  */
-// router.put('/:id', controller.update)
+router.put('/:id', controller.update)
 
 export default router
