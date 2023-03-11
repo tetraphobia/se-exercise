@@ -3,8 +3,6 @@ import logger from 'jet-logger'
 
 /**
  * Connect to mongodb server with mongoose
- *
- * @param {string} uri Optional param specifying mongodb uri
  */
 export function mongoConnect () {
   const uri = process.env.MONGO_URI || 'mongodb://root:example@localhost:27017'
